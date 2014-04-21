@@ -2,19 +2,15 @@
 
 <h1>New Message</h1>
 
-<% if @message.errors.any? %>
-  <p>Something went wrong:</p>
-  <ul>
-    <% @messages.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render("layouts/errors", :object => @message) %>
 
 <%= form_for @message do |f| %>
   <div id='field'>
     <%= f.label :to %>
-    <%= f.text_field :to %>
+    <% Contact.all.each do |contact| %>
+      <%= check_box_tag "message[:phone][]", :phone %>
+      <%= contact.name %><br />
+    <% end %>
   </div>
   <div id='field'>
     <%= f.label :from %>
@@ -25,4 +21,4 @@
     <%= f.text_field :body %>
   </div>
   <%= f.submit %>
-<% end %>
+<% end %><br />

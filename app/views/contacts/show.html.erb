@@ -1,0 +1,13 @@
+<%= content_for(:title, "View Contacts | Texter") %>
+
+<h1>View Contacts</h1>
+<h3><%= @contact.name %></h3>
+<h4><%= @contact.phone %></h4>
+
+<p><%= link_to "Edit", edit_contact_path(@contact) %></p>
+<p><%= link_to "Delete", contact_path(@contact),
+                         :confirm => "You sure?",
+                         :method => "delete" %></p>
+
+<%= link_to "Contacts", contacts_path %>
+
