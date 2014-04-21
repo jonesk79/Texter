@@ -1,0 +1,28 @@
+<%= content_for(:title, "New Message | Texter") %>
+
+<h1>New Message</h1>
+
+<% if @message.errors.any? %>
+  <p>Something went wrong:</p>
+  <ul>
+    <% @messages.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @message do |f| %>
+  <div id='field'>
+    <%= f.label :to %>
+    <%= f.text_field :to %>
+  </div>
+  <div id='field'>
+    <%= f.label :from %>
+    <%= f.text_field :from %>
+  </div>
+  <div id='field'>
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
